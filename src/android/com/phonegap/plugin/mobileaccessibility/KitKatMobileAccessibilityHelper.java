@@ -42,28 +42,12 @@ public class KitKatMobileAccessibilityHelper extends
     }
 
     @Override
-    public boolean isScreenReaderRunning() {
-        return mAccessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_BRAILLE | AccessibilityServiceInfo.FEEDBACK_SPOKEN).size() > 0;
-    }
-
-    @Override
-    public boolean isClosedCaptioningEnabled() {
-        return mCaptioningManager.isEnabled();
-    }
-
-    @Override
-    public boolean isTouchExplorationEnabled() {
-        return mAccessibilityManager.isTouchExplorationEnabled();
-    }
-
-    @Override
     public void addStateChangeListeners() {
         super.addStateChangeListeners();
         if (mCaptioningChangeListener == null) {
             mCaptioningChangeListener = new CaptioningChangeListener() {
                 @Override
                 public void onEnabledChanged(boolean enabled) {
-                    onCaptioningEnabledChanged(enabled);
                 }
             };
         }
@@ -93,7 +77,6 @@ public class KitKatMobileAccessibilityHelper extends
 
         @Override
         public void onTouchExplorationStateChanged(boolean enabled) {
-            mMobileAccessibility.onTouchExplorationStateChanged(enabled);
         }
     }
 }

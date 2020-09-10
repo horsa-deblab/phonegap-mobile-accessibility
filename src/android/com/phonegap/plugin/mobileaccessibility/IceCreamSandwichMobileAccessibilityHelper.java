@@ -36,11 +36,6 @@ public class IceCreamSandwichMobileAccessibilityHelper extends
     private AccessibilityStateChangeListener mAccessibilityStateChangeListener;
 
     @Override
-    public boolean isScreenReaderRunning() {
-        return mAccessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_SPOKEN).size() > 0;
-    }
-
-    @Override
     public void addStateChangeListeners() {
         if (mAccessibilityStateChangeListener == null) {
             mAccessibilityStateChangeListener = new InternalAccessibilityStateChangeListener();
@@ -98,7 +93,6 @@ public class IceCreamSandwichMobileAccessibilityHelper extends
 
         @Override
         public void onAccessibilityStateChanged(boolean enabled) {
-            mMobileAccessibility.onAccessibilityStateChanged(enabled);
         }
     }
 }
